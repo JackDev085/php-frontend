@@ -42,8 +42,24 @@ function http_request($url, $method = "GET", $data = null, $headers = []) {
 function verifyToken($token) {
     $url = "https://flash-cards-fastapi.vercel.app/verify_token";
     $headers = ["Authorization: Bearer $token"];
-    $response = http_request($url, "GET", null, $headers);
-    return json_decode($response);
+    $response = http_request($url, "POST", null, $headers);
+    $response = json_decode($response, true);
+    if ($response["message"] === "Token is valid") {
+        return true;
+    }
+    return false;
 }
 
-?>
+function nextCard() {
+
+$access_token = $_SESSION['access_token'];
+$flashcards = http_request("https://flash-cards-fastapi.vercel.app/api/aleatory_card/", "GET", null, ["Authorization: Bearer $access_token"]);
+$flashcards = json_decode($flashcards);
+if (isset($flashcards->detail)) {
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
+return $flashcards;
+
+}

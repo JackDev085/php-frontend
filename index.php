@@ -1,23 +1,13 @@
 <?php
 require "utils.php";
+ini_set("error_level",0);
 
 session_start();
 if (!isset($_SESSION['access_token'])) {
     header("Location: login.php");
     exit();
 }
-if (!verifyToken($_SESSION['access_token'])) {
-    session_destroy();
-    header("Location: login.php");
-    exit();
-}
 
-function nextCard() {
-    $access_token = $_SESSION['access_token'];
-    $flashcards = http_request("https://flash-cards-fastapi.vercel.app/api/aleatory_card/", "GET", null, ["Authorization: Bearer $access_token"]);
-    $flashcards = json_decode($flashcards);
-    return $flashcards;
-}
 
 $flashcards = nextCard();
 ?>

@@ -1,5 +1,14 @@
 <?php
   require "utils.php";
+  ini_set("display_errors", 0);
+
+  session_start();
+
+
+  if(isset($_SESSION["access_token"]) && verifyToken($_SESSION["access_token"])) {
+     header("Location: index.php");
+  }
+
   if($_SERVER['REQUEST_METHOD'] === "POST") {
     $username = $_POST['username']?? "";
     $password = $_POST['password']?? "";
