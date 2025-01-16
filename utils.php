@@ -38,3 +38,12 @@ function http_request($url, $method = "GET", $data = null, $headers = []) {
 
     return $response;
 }
+
+function verifyToken($token) {
+    $url = "https://flash-cards-fastapi.vercel.app/verify_token";
+    $headers = ["Authorization: Bearer $token"];
+    $response = http_request($url, "GET", null, $headers);
+    return json_decode($response);
+}
+
+?>
