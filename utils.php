@@ -52,14 +52,14 @@ function verifyToken($token) {
 
 function nextCard() {
 
-$access_token = $_SESSION['access_token'];
-$flashcards = http_request("https://flash-cards-fastapi.vercel.app/api/aleatory_card/", "GET", null, ["Authorization: Bearer $access_token"]);
-$flashcards = json_decode($flashcards);
-if (isset($flashcards->detail)) {
-    session_destroy();
-    header("Location: login.php");
-    exit();
-}
-return $flashcards;
+    $access_token = $_SESSION['access_token'];
+    $flashcards = http_request("https://flash-cards-fastapi.vercel.app/api/aleatory_card/", "GET", null, ["Authorization: Bearer $access_token"]);
+    $flashcards = json_decode($flashcards);
+    if (isset($flashcards->detail)) {
+        session_destroy();
+        header("Location: login.php");
+        exit();
+    }
+    return $flashcards;
 
 }

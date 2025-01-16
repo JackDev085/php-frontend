@@ -48,10 +48,10 @@
   <main class="main">
     <form class="form-login" action="login.php" method="post">
       <label for="username">usuário</label>
-      <input type="text" name="username" id="username">
+      <input type="text" name="username" id="username" placeholder="Digite seu usuário">
       <label for="password">senha</label>
       <div class="password-container">
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" placeholder="Digite sua senha">
         <i class="fa-solid fa-eye"></i>
       </div>
         
@@ -61,7 +61,9 @@
         echo "<p class='error'>Error: $error</p>";
         }
       ?>
+      <p>Não tem uma conta? <a class="register-link" href="register.php">Registrar</a></p>
     </form>
+
     <script>
       const eye = document.querySelector(".fa-eye");
       const password = document.querySelector("#password");

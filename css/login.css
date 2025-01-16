@@ -66,3 +66,12 @@
     width: 90%;
   }
 }
+
+.form-login p{
+  text-align: center;
+  margin-top: 1em;
+}
+
+.register-link{
+  color: rgb(100, 148, 224);
+}

@@ -66,11 +66,6 @@
   font-size: 1.1rem;
 }
 
-.disabled {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
 .cardContainer {
   perspective: 1000px; /* Adiciona perspectiva para o efeito 3D */
   width: 100%;
