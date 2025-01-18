@@ -55,7 +55,7 @@ class Response{
    * Metodo responsavel por enviar a resposta para o usuário
    * @return void
    */
-  public function sendReponse(){
+  public function sendResponse(){
     // Envia os headers
     $this -> sendHeader();
 
